@@ -23,8 +23,5 @@ class Ennemi(Perso):
                 - carac ihm (entier, 10 PD)
                 - carac kernel (entier, 10 PD)
                 - carac hard (entier, 10 PD)
-            """
-            Perso.__init__(self, nom, poidsMax, cafe, 
-                           carSec, carIhm, carKernel, carHard);
-
-
+        """
+	Perso.__init__(self, nom, carSec, carIhm, carKernel, carHard);
