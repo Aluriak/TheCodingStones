@@ -2,8 +2,7 @@
 Choses à faire, et les gars qui s'en occupent (en tout cas, qui l'ont dit)
 
 
-
-
+Classes joueur, ennemi, element, objet à implémenter
 
 
 

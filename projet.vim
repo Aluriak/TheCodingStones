@@ -1,8 +1,8 @@
 e main.py
 vsp settings.py
 
-tabnew Element/Element.py
-vsplit Element/Objet/Objet.py
-tabnew Element/Perso/Ennemi/Ennemi.py
-vsplit Element/Perso/Joueur/Joueur.py
+tabnew element/element.py
+vsplit element/objet/objet.py
+tabnew element/perso/ennemi/ennemi.py
+vsplit element/perso/joueur/joueur.py
 tabnew todolist.mkd
