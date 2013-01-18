@@ -44,3 +44,10 @@ class Map:
 
         return types
 
+	def generer_apparition_monstres(self):
+		""" défini l'apparition de monstres (seulement si le joueur n'est pas dans un trou)"""
+		if self.types == "Terre":
+			if random() < 0.15:
+				return random(self.liste_monstres)
+		else:
+			return "Aucune apparition !"
