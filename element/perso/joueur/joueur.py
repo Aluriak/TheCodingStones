@@ -11,7 +11,6 @@ class Joueur(Perso):
     """
     Classe du joueur, dérivant de Perso.
     """
-
     
     def __init__(self, nom, poidsMax = 10, cafe = 42, carSec = 10, 
                  carIhm = 10, carKernel = 10, carHard = 10):
@@ -46,7 +45,6 @@ class Joueur(Perso):
     def bas(self): self.y -= 1
 
 
-    
 
 
 

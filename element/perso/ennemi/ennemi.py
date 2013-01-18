@@ -17,16 +17,11 @@ class Ennemi(Perso):
 	    """
 	    Initialise l'ennemi, selon Element
 	    Argument :
-		- nom (string)
+		        - nom (string)
                 - poids maximal portable (entier positif)
-		- carac securité (entier, 10 PD)
+		        - carac securité (entier, 10 PD)
                 - carac ihm (entier, 10 PD)
                 - carac kernel (entier, 10 PD)
                 - carac hard (entier, 10 PD)
-<<<<<<< HEAD
-            """
-            Perso.__init__(self, nom, poidsMax, cafe, carSec, carIhm, carKernel, carHard);
-=======
         """
-	Perso.__init__(self, nom, carSec, carIhm, carKernel, carHard);
->>>>>>> ba6bc9b8b9884c1e384afb01ac9bb6bf18db4e85
+        Perso.__init__(self, nom, poidsMax, cafe, carSec, carIhm, carKernel, carHard);
