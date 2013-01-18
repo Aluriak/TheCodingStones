@@ -1,0 +1,19 @@
+# TODO LIST
+Choses à faire, et les gars qui s'en occupent (en tout cas, qui l'ont dit)
+
+
+
+
+
+
+
+
+# ARCHI
+Archi globale du prog, histoire de s'y retrouver
+- element
+    - objet
+    - perso
+        - ennemi
+        - joueur
+
+
