@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import settings
+from settings import *
 
 
 
@@ -11,7 +11,6 @@ class Objet(Element):
     """
     Classe d'objet, dérivant d'Element.
     """
-
 
     def __init__(self, nom, poids = 1, carSec = 10,
                  carIhm = 10, carKernel = 10, carHard = 10):
