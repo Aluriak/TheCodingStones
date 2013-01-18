@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 File : map.py
@@ -7,6 +7,12 @@ Gestion de la map.
 """
 
 from random import choice, random
+from glob import glob
+from re import sub
+import os
+
+import settings
+
 
 class Map:
     """
@@ -31,6 +37,7 @@ class Map:
 
         self.longueur = longueur
         self.largeur = largeur
+        self.liste_monstres = self.generer_liste_monstres()
 
         # générer la map elle même.
         self.map = [[choice(self.generer_liste_types()) for _ in range(self.largeur)] for __ in range(self.longueur)]
@@ -44,3 +51,19 @@ class Map:
 
         return types
 
+    def generer_liste_monstres(self):
+        """
+        génère une liste de monstres à partir des fichiers dans RESSOURCES_PATH/monstres
+        """
+
+        # la première liste (celle à l'intérieure récupère la liste des fichiers via glob() et vire le path jusqu'au
+        # fichier. La seconde enlève le .json à la fin
+        return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{}/montres/*.json'.format(settings.RESSOURCES_PATH))]]
+
+	def generer_apparition_monstres(self):
+		""" défini l'apparition de monstres (seulement si le joueur n'est pas dans un trou)"""
+		if self.types == "Terre":
+			if random() < 0.15:
+				return random(self.liste_monstres)
+		else:
+			return "Aucune apparition !"
