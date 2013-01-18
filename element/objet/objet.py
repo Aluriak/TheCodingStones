@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import settings
+from settings import *
 
 
 
@@ -12,17 +12,17 @@ class Objet(Element):
     Classe d'objet, dérivant d'Element.
     """
 
-
-    def __init__(self, nom, carSec = 10,
+    def __init__(self, nom, poids = 1, carSec = 10,
                  carIhm = 10, carKernel = 10, carHard = 10):
         """
         Initialise l'objet, selon Element
         Arguments :
             - nom (string)
-            - carac securité (entier, 10 PD)
-            - carac ihm (entier, 10 PD)
-            - carac kernel (entier, 10 PD)
-            - carac hard (entier, 10 PD)
+            - poids (entier positif)
+            - carac securité (entier, 0 PD)
+            - carac ihm (entier, 0 PD)
+            - carac kernel (entier, 0 PD)
+            - carac hard (entier, 0 PD)
         NOTE : les valeurs envoyées sont des modificateurs, pas des valeurs
         en effet, les personnages équipent des objets dont les caractéristique
               indiquent l'altération de la caractéristique.
@@ -30,7 +30,7 @@ class Objet(Element):
               augmente de 1 l'hardware et diminue de 2 la sécurité.
         """
         Element.__init__(self, nom, carSec, carIhm, carKernel, carHard);
-
+        self.poids = poids
 
 
 
