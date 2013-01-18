@@ -13,12 +13,13 @@ class Objet(Element):
     """
 
 
-    def __init__(self, nom, carSec = 10,
+    def __init__(self, nom, poids = 1, carSec = 10,
                  carIhm = 10, carKernel = 10, carHard = 10):
         """
         Initialise l'objet, selon Element
         Arguments :
             - nom (string)
+            - poids (entier positif)
             - carac securité (entier, 10 PD)
             - carac ihm (entier, 10 PD)
             - carac kernel (entier, 10 PD)
@@ -30,7 +31,7 @@ class Objet(Element):
               augmente de 1 l'hardware et diminue de 2 la sécurité.
         """
         Element.__init__(self, nom, carSec, carIhm, carKernel, carHard);
-
+        self.poids = poids
 
 
 
