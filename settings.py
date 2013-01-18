@@ -5,3 +5,4 @@ CARAC_IHM = "IHM"
 CARAC_KERNEL = "CodeKernel"
 CARAC_HARD =  "Hardware"
 
+RESSOURCES_PATH = "ressources/"
