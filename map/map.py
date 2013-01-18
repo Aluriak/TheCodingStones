@@ -60,10 +60,41 @@ class Map:
         # fichier. La seconde enlève le .json à la fin
         return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{}/montres/*.json'.format(settings.RESSOURCES_PATH))]]
 
+	def positionnement_objet(self):
+		""" place aléatoirement les objets sur la map """
+		for i in map:
+			for j in i:
+				if self.types == "Terre":
+					if random() <= 0.001:
+						self.types = "Terre O"
+
+
 	def generer_apparition_monstres(self):
-		""" défini l'apparition de monstres (seulement si le joueur n'est pas dans un trou)"""
+		""" défini l'apparition de monstres (seulement si le joueur n'est pas dans un trou et qu'il n'y pas d'objet sur cette case)"""
 		if self.types == "Terre":
 			if random() < 0.15:
-				return random(self.liste_monstres)
+				return choice(self.liste_monstres)
+
+
+	def affichage(self):
+		""" affcichage de la map """
+		corres = {
+				'Terre' : ' ',
+				'Mur' : 'X',
+				'Eau' : '~',
+				'Trou' : 'O',
+				'Terre O' : ' '
+				}
+		for i in map:
+			for j in i:
+				print(corres[i])
+				print('\n')
+
+	def objet_present(self, x, y):
+		""" retourne le type d'objet si présent """
+		if self.types == "Terre O":
+			return choice(self.liste_objets)
 		else:
-			return "Aucune apparition !"
+			return ''
+
+	

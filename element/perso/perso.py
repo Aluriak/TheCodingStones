@@ -11,9 +11,7 @@ class Perso(Element):
     """
     Classe de personnage, ennemi ou joueur, dérivant d'Element
     """
-    
-    def __init__(self, nom, poidsMax = 100, cafe = 42, carSec = 10, 
-                 carIhm = 10, carKernel = 10, carHard = 10):
+    def __init__(self, nom, poidsMax = 100, cafe = 42, carSec = 10, carIhm = 10, carKernel = 10, carHard = 10):
         """
         Initialise le personnage, selon Element
         Arguments :
@@ -30,13 +28,12 @@ class Perso(Element):
         self.equipements = [] # liste d'objets
         self.poidsEquipement = 0 # pas d'objets équipés, donc poids porté à 0
         self.poidsMax = poidsMax # poids maximum portable
-        # le poids max doit toujours être supérieur ou égal 
+        # le poids max doit toujours être supérieur ou égal
         #       au poids de l'équipement. (logique, non ?)
-        
 
     def equiperObjet(self, objetCible):
         """
-        Équipe l'objet envoyé et opère les modifs à faire sur les 
+        Équipe l'objet envoyé et opère les modifs à faire sur les
         valeurs du personnage.
         Retourne False si l'objet ne peut être équipé, True si équipé
         """
@@ -55,8 +52,6 @@ class Perso(Element):
         else:
             return False # objet non équipé
 
-
-    
     def retirerObjet(self, objetCible):
         """
         Recherche l'objet envoyé en argument dans la liste d'équipement,
@@ -80,7 +75,3 @@ class Perso(Element):
                 inter.append(obj) # on ajoute l'objet à la liste intermédiaire
         # la liste intemédiaire écrase la liste régulière d'équipement
         self.equipement = inter
-                
-
-
-
