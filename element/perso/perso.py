@@ -12,7 +12,7 @@ class Perso(Element):
     Classe de personnage, ennemi ou joueur, dérivant d'Element
     """
     
-    def __init__(self, nom, poidsMax = 100, cafe = 100, carSec = 10, 
+    def __init__(self, nom, poidsMax = 100, cafe = 42, carSec = 10, 
                  carIhm = 10, carKernel = 10, carHard = 10):
         """
         Initialise le personnage, selon Element
