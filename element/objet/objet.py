@@ -20,10 +20,10 @@ class Objet(Element):
         Arguments :
             - nom (string)
             - poids (entier positif)
-            - carac securité (entier, 10 PD)
-            - carac ihm (entier, 10 PD)
-            - carac kernel (entier, 10 PD)
-            - carac hard (entier, 10 PD)
+            - carac securité (entier, 0 PD)
+            - carac ihm (entier, 0 PD)
+            - carac kernel (entier, 0 PD)
+            - carac hard (entier, 0 PD)
         NOTE : les valeurs envoyées sont des modificateurs, pas des valeurs
         en effet, les personnages équipent des objets dont les caractéristique
               indiquent l'altération de la caractéristique.
