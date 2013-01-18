@@ -61,6 +61,8 @@ class Perso(Element):
                 self.carac[CARAC_HARDWARE]      -= obj.carac[CARAC_HARDWARE]
             else:
                 inter.append(obj) # on ajoute l'objet à la liste intermédiaire
+        # la liste intemédiaire écrase la liste régulière d'équipement
+        self.equipement = inter
                 
 
 
