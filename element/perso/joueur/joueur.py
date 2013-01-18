@@ -16,7 +16,7 @@ class Joueur(Perso):
     def __init__(self, nom, carSec = 10, 
                  carIhm = 10, carKernel = 10, carHard = 10):
         """
-        Initialise l'objet, selon Element
+        Initialise le joueur, selon Element
         Arguments :
             - nom (string)
             - carac securité (entier, 10 PD)
