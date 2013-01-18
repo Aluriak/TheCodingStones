@@ -59,14 +59,14 @@ class Map:
 
         # la première liste (celle à l'intérieure récupère la liste des fichiers via glob() et vire le path jusqu'au
         # fichier. La seconde enlève le .json à la fin
-        return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{}/montres/*.json'.format(settings.RESSOURCES_PATH))]]
+        return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{0}/montres/*.json'.format(settings.RESSOURCES_PATH))]]
 
 
     def generer_liste_objets(self):
         """
         génère une liste d'objets à partir des fichiers dans RESSOURCES_PATH/objets
         """
-        return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{}/objets/*.json'.format(settings.RESSOURCES_PATH))]]
+        return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{0}/objets/*.json'.format(settings.RESSOURCES_PATH))]]
 
 	def positionnement_objet(self):
 		""" place aléatoirement les objets sur la map """
@@ -97,11 +97,10 @@ class Map:
 				print(corres[i])
 				print('\n')
 
+
 	def objet_present(self, x, y):
 		""" retourne le type d'objet si présent """
 		if self.types == "Terre O":
 			return choice(self.liste_objets)
 		else:
 			return ''
-
-	
