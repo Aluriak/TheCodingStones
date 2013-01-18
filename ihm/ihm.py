@@ -74,7 +74,7 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         self.joueur = 0 # pas de joueur au départ
         self.carte = 0 # pas de carte au départ
         # initialisation de pygame
-        pygame.display.init()
+        pygame.display.init() # module graphique
 
 
     def menuDemarrage(self): 
@@ -92,6 +92,8 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         """ 
         Prend les ref vers la carte et le joueur
         """
+        self.joueur = joueur
+        self.carte = carte
 
 
     def afficherJeu(self): 
@@ -131,6 +133,9 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         Attent une liste de chaînes. Chaque chaîne sera 
         ajoutée à la liste de logs de l'IHM.
         """
+        # on rajoute les éléments de logs dans les logs de l'IHM
+        for log in logs:
+            self.logs.append(log)
 
 
 
