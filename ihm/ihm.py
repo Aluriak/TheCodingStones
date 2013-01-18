@@ -38,6 +38,9 @@ L'IHM vous renverra des actions correspondant à la volonté de l'utilisateur.
     - initialiserJeu(joueur, carte): prend les ref vers la carte et le joueur;
 
     - afficherJeu(): affiche le jeu selon les valeurs connues
+
+    - mouvement(): demande un mouvement à l'utilisateur, renvois 'haut', 'bas',
+        'gauche' ou 'droite'.
     
     - dialogObjet(): attends un objet, retourne vrai si l'utilisateur 
         veux s'en équiper
@@ -102,6 +105,15 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         Affiche le jeu selon les valeurs connues (joueur et carte)
         """
         pass
+
+
+    def mouvement(self): 
+        """
+        demande un mouvement à l'utilisateur, renvois 'haut', 'bas',
+        'gauche' ou 'droite'.
+        """
+        # valeur par défaut : aléatoire
+        return random.choice(['haut', 'bas', 'gauche', 'droite'])
 
 
     def dialogObjet(self, objet): 
