@@ -24,5 +24,9 @@ class Ennemi(Perso):
                 - carac hard (entier, 10 PD)
         """
 	Perso.__init__(self, nom, carSec, carIhm, carKernel, carHard);
+	
+
+
+	
 
 
