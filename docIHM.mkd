@@ -1,0 +1,3 @@
+# DOC IHM
+Ce document retrace les méthodes d'accès de l'IHM.
+Intérêt : savoir comment faire pour interagir, et permettre au developpeur d'avoir les idées claires (ce qui est très important à trois heures du mat')
