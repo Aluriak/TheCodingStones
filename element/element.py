@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import settings
+from settings import *
 
 
 
@@ -29,7 +29,7 @@ class Element():
         """
         self.nom = nom
         self.carac = {
-            CARAC_SECURITE : carSec,
+            CARAC_SECU : carSec,
             CARAC_IHM : carIhm,
             CARAC_KERNEL : carKernel,
             CARAC_HARD : carHard,

@@ -1,3 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import settings
+from settings import *
+
+
+# !!!! TESTING !!!!
+
+monTruc = Element("jean-michel")
+monBidule = Joueur("jean-michel")
+
+# !!!! TESTING !!!!
+
+
+
