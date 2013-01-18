@@ -38,6 +38,7 @@ class Map:
         self.longueur = longueur
         self.largeur = largeur
         self.liste_monstres = self.generer_liste_monstres()
+        self.liste_objets = self.generer_liste_objets()
 
         # générer la map elle même.
         self.map = [[choice(self.generer_liste_types()) for _ in range(self.largeur)] for __ in range(self.longueur)]
@@ -60,6 +61,13 @@ class Map:
         # fichier. La seconde enlève le .json à la fin
         return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{}/montres/*.json'.format(settings.RESSOURCES_PATH))]]
 
+
+    def generer_liste_objets(self):
+        """
+        génère une liste d'objets à partir des fichiers dans RESSOURCES_PATH/objets
+        """
+        return [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{}/objets/*.json'.format(settings.RESSOURCES_PATH))]]
+
 	def positionnement_objet(self):
 		""" place aléatoirement les objets sur la map """
 		for i in map:
@@ -67,7 +75,6 @@ class Map:
 				if self.types == "Terre":
 					if random() <= 0.001:
 						self.types = "Terre O"
-
 
 	def generer_apparition_monstres(self):
 		""" défini l'apparition de monstres (seulement si le joueur n'est pas dans un trou et qu'il n'y pas d'objet sur cette case)"""
