@@ -67,14 +67,12 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         Démarre pygame.
         Charge les ressources.
         """
-        # lien permanent vers la carte
-        self.carte = carte
+        # initialisation de pygame
+        pygame.display.init() # module graphique
         # autre attributs
         self.logs = ["IHM initialisée"]
         self.joueur = 0 # pas de joueur au départ
         self.carte = 0 # pas de carte au départ
-        # initialisation de pygame
-        pygame.display.init() # module graphique
 
 
     def menuDemarrage(self): 
@@ -86,11 +84,14 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             un joueur ayant ces carac et ce nom)
         format du tuple : ('nom', carSec, carIhm, carKernel, carHard)
         """
+        # valeurs par défaut pour le moment
+        return ("jean-michel", 10, 10, 10, 10) 
     
 
     def initialiserJeu(self, joueur, carte): 
         """ 
-        Prend les ref vers la carte et le joueur
+        Prend les ref vers la carte et le joueur.
+        Oui, c'est tout. Mais si vous oubliez de l'appeler, l'IHM va merder sec.
         """
         self.joueur = joueur
         self.carte = carte
@@ -98,8 +99,9 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
 
     def afficherJeu(self): 
         """ 
-        Affiche le jeu selon les valeurs connues (joueur, carte)
+        Affiche le jeu selon les valeurs connues (joueur et carte)
         """
+        pass
 
 
     def dialogObjet(self, objet): 
@@ -107,13 +109,21 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         Attends un objet, retourne vrai si l'utilisateur 
         veux s'en équiper
         """
+        # valeurs par défaut
+        return True 
 
 
     def dialogCombat(self, combat): 
         """ 
         Attends un combat, retourne l'action du joueur dans ce
         combat, (combattre ou fuire, dans un premier temps)
+        actions possibles :
+            - 'fuite'
+            - 'combattre'
         """
+        # valeurs par défaut
+        return 'combattre'
+
 
     def finCombat(combat): 
         """ 
@@ -121,16 +131,20 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         fin de combat, et se termine sans rien renvoyer quand l'utilisateur
         quitte l'écran de fin de combat.
         """
+        pass
+
 
     def gameOver(): 
         """ 
         Affiche l'écran de fin de jeu, s'arrête quand l'utilisateur 
         quitte l'écran de fin de jeu, en ne renvoyant rien.
         """
+        pass
+
 
     def ajouterLogs(self, logs): 
         """ 
-        Attent une liste de chaînes. Chaque chaîne sera 
+        Attend une liste de chaînes. Chaque chaîne sera 
         ajoutée à la liste de logs de l'IHM.
         """
         # on rajoute les éléments de logs dans les logs de l'IHM
