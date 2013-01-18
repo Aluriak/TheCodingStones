@@ -26,6 +26,21 @@ class Joueur(Perso):
         """
         Perso.__init__(self, nom, carSec, carIhm, carKernel, carHard);
 
+        self.x = 0
+        self.y = 0
+
+
+
+    # fonction de mouvements
+    # ce sont de simple accesseurs pas franchement PEP8 friendly,
+    # mais elles sont limites plus lisibles comme ça
+    def coords(self): return (self.x, self.y)
+    def droite(self): self.x += 1
+    def gauche(self): self.x -= 1
+    def haut(self): self.y += 1
+    def bas(self): self.y -= 1
+
+
     
 
 
