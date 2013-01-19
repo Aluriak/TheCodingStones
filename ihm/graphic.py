@@ -34,27 +34,28 @@ class Graphic:
         """
         affiche le jeu dans l'écran
         """
-        corres = {
-            'Terre' : ' ',
-            'Mur' : 'X',
-            'Eau' : '~',
-            'Trou' : 'O',
-            'Terre O' : '@'
-        }
-        for i in map:
-            for j in i:
-                print(corres[i])
-            print('\n')
+        #corres = {
+            #'Terre' : ' ',
+            #'Mur' : 'X',
+            #'Eau' : '~',
+            #'Trou' : 'O',
+            #'Terre O' : '@'
+        #}
+        #for i in map:
+            #for j in i:
+                #print(corres[i])
+            #print('\n')
 
-        # Parcours de la map
-        for ligne in carte.map:
-            if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
-                for colonne in ligne: 
-                    if(colonne > joueur.x-TILE_GAUCHE and 
-                            colonne < joueur.x+TILES_GAUCHE):
-                        # la case considérée doit être affichées
-                        coordLigne = ligne - (joueur.y - TILES_HAUT)
-                        coordColon = colonne - (joueur.x - TILES_GAUCHE)
+        ## Parcours de la map
+        #for ligne in carte.map:
+            #if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
+                #for colonne in ligne: 
+                    #if(colonne > joueur.x-TILE_GAUCHE and 
+                            #colonne < joueur.x+TILES_GAUCHE):
+                        ## la case considérée doit être affichées
+                        #coordLigne = ligne - (joueur.y - TILES_HAUT)
+                        #coordColon = colonne - (joueur.x - TILES_GAUCHE)
+        carte.affiche()
                         
 
                  
