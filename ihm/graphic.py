@@ -34,9 +34,9 @@ class Graphic:
         self.res_menu_title = pygame.image.load(
                 "ressources/graphique/menu/menu_title.bmp")
         self.res_menu_userBig = pygame.image.load(
-                "ressources/graphique/menu/menu_userBig.bmp")
+                "ressources/graphique/menu/user_big.bmp")
         self.res_menu_userSmall = pygame.image.load(
-                "ressources/graphique/menu/menu_userSmall.bmp")
+                "ressources/graphique/menu/user_small.bmp")
 
 
     def afficherJeu(self, ecran, carte, joueur, logs):
