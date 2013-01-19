@@ -113,7 +113,7 @@ class Map:
             'Mur' : 'X',
             'Eau' : '~',
             'Trou' : 'O',
-            'Terre O' : ' '
+            'Terre O' : '@'
         }
 
         for i in self.map:
