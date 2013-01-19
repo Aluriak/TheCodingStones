@@ -43,19 +43,7 @@ class Graphic:
         """
         affiche le jeu dans l'écran
         """
-        corres = {
-            'Terre' : ' ',
-            'Mur' : 'X',
-            'Eau' : '~',
-            'Trou' : 'O',
-            'Terre O' : ' '
-        }
-        for i in map:
-            for j in i:
-                print(corres[i])
-            print('\n')
-
-        pass
+        carte.affichage()
 
 
     def afficherMenu(self, ecran):
