@@ -48,7 +48,7 @@ class Graphic:
         pass
 
 
-    def afficherDialogCombat(self, ecran, combat):
+    def afficherDialogCombat(self, ecran, combat, reponse):
         """
         affiche la boite de dialogue pour le combat envoyé
         """

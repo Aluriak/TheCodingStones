@@ -192,7 +192,7 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         # valeurs par défaut
         reponse = 'fuite'
         while not self.termine:
-            self.graphics.afficherDialogCombat(ecran, combat, reponse)
+            self.graphics.afficherDialogCombat(self.ecran, combat, reponse)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.termine = True
