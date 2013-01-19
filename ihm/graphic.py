@@ -65,15 +65,7 @@ class Graphic:
                         ## la case considérée doit être affichées
                         #coordLigne = ligne - (joueur.y - TILES_HAUT)
                         #coordColon = colonne - (joueur.x - TILES_GAUCHE)
-<<<<<<< HEAD
         carte.affichage()
-=======
-                        #
-        carte.affiche()
->>>>>>> c0a8f82199c5104ce0e9d3bc2e6d440f45bf4805
-                        
-
-                 
 
 
     def afficherMenu(self, ecran, selection, 
