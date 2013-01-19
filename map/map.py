@@ -100,7 +100,11 @@ class Map:
 
 	def objet_present(self, x, y):
 		""" retourne le type d'objet si présent """
-		if self.types == "Terre O":
+		if self.map[y][x] == "Terre O":
 			return choice(self.liste_objets)
 		else:
 			return ''
+
+	def monstre_present(self, x, y):
+		""" retourne le type de monstre si présent """
+        return choice(self.liste_objets)

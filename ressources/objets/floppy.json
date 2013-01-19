@@ -1,0 +1,9 @@
+{
+    'nom': 'Floppy de la mort',
+    'poids': 1,
+    'carSec': +1,
+    'carIhm': +1,
+    'carKernel': +1,
+    'carHard': +1,
+
+}

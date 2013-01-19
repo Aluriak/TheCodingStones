@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-
-
+from perso import Perso
 
 #########################
 # ENNEMI (CLASS)        #
