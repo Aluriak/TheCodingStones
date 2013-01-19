@@ -55,7 +55,7 @@ class Graphic:
                         ## la case considérée doit être affichées
                         #coordLigne = ligne - (joueur.y - TILES_HAUT)
                         #coordColon = colonne - (joueur.x - TILES_GAUCHE)
-        carte.affiche()
+        carte.affichage()
                         
 
                  
