@@ -29,6 +29,7 @@ class Graphic:
         affiche le jeu dans l'écran
         """
         #ecran.fill(0,0,0) # on vide l'écran
+        pygame.display.flip()
         pass
 
 
@@ -37,6 +38,7 @@ class Graphic:
         affiche le menu dans l'écran
         """
         #ecran.fill(0,0,0) # on vide l'écran
+        pygame.display.flip()
         pass
 
     def afficherDialogObjet(self, ecran, objet, reponse):
@@ -44,15 +46,40 @@ class Graphic:
         affiche la boite de dialogue pour l'objet envoyé.
         reponseest un booléen, décrivant la réponse mise en avant.
         """
-        #ecran.fill(0,0,0) # on vide l'écran
+        # Fill background
+        background = pygame.Surface(screen.get_size())
+        background = background.convert()
+        background.fill((0, 0, 0))
+
+        # Display some text
+        font = pygame.font.Font("Terminus", 36)
+        text = font.render("""Objet : {0} 
+Poids : {1}
+Sécurité : {2}
+IHM : {3}
+Kernel : {4}
+Hardware : {5}
+S'équiper ?""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
+                        objet.carac[CARAC_IHM],
+                        objet.carac[CARAC_KERNEL],
+                        objet.carac[CARAC_HARD]), 
+                           1, (255, 255, 255))
+        textpos = text.get_rect()
+        textpos.centerx = background.get_rect().centerx
+        background.blit(text, textpos)
+
+        # Blit everything to the screen
+        ecran.blit(background, (0, 0))
+        pygame.display.flip()
         pass
 
 
-    def afficherDialogCombat(self, ecran, combat):
+    def afficherDialogCombat(self, ecran, combat, reponse):
         """
         affiche la boite de dialogue pour le combat envoyé
         """
         #ecran.fill(0,0,0) # on vide l'écran
+        pygame.display.flip()
         pass
 
 
