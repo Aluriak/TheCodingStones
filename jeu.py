@@ -25,24 +25,29 @@ class Jeu:
         # init IHM
         self.ihm = IHM(hauteur=settings.LONGUEUR, largeur=settings.LARGEUR)
         donnees_joueur = self.ihm.menuDemarrage()
+        self.ihm.log('Données joueurs récupérées')
 
         # on init. la map
+        self.ihm.log('Création de la Map')
         self.map = Map(settings.LONGUEUR, settings.LARGEUR)
 
         # on init le joueur
+        self.ihm.log('Creation du joueur')
         self.joueur = Joueur(nom=donnees_joueur['nom'],
                              carSec = donnees_joueur['secu'],
                              carIhm = donnees_joueur['ihm'],
-                         carKernel = donnees_joueur['kernel'],
-                         carHard = donnees_joueur['hardware']
+                             carKernel = donnees_joueur['kernel'],
+                             carHard = donnees_joueur['hardware']
                             )
 
         # init du jeu (IHM)
+        self.ihm.log('Initialiser jeu')
         self.ihm.initialiserJeu(self.joueur, self.map)
 
         self.objets = {}
 
         # pas pour le prochain monstre
+        self.ihm.log('Tirage au sort du nombre de pas')
         self.reinit_pas()
 
         self.generer_liste_monstres()
@@ -50,6 +55,8 @@ class Jeu:
 
     def start(self):
         """ fonction qui bosse (la seule qui bosse ici en fait....) """
+
+        self.ihm.log('On attaque la boucle infinie')
 
         while 1:
 
@@ -90,6 +97,7 @@ class Jeu:
 
             # 6.1. monstre ?
             if not self.pas_pour_monstre:
+                self.ihm.log("C'est l'heure du monstre")
 
                 # 7.1. on l'instancie
                 monstre = self.spawn_monstre()
@@ -105,11 +113,13 @@ class Jeu:
                     combat.fuite()
 
                 self.ihm.finCombat(combat)
+                self.reinit_pas()
 
             # 6.2. objet ?
             # 7.2. on le récupère/on l'instancie
             # 8.2. on le refourgue à l'IHM qui affiche un dialog
             # 9.2. l'user répond et on prend en compte son choix
+            self.ihm.log("Checks pour les objets")
             self.objet_trouve()
 
 
@@ -118,9 +128,11 @@ class Jeu:
         génère une liste de monstres à partir des fichiers dans RESSOURCES_PATH/monstres
         """
 
+        self.ihm.log("Generation de la liste de monstres")
+
         # la première liste (celle à l'intérieure récupère la liste des fichiers via glob() et vire le path jusqu'au
         # fichier. La seconde enlève le .json à la fin
-        self.liste_monstres =  [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{0}/montres/*.json'.format(settings.RESSOURCES_PATH))]]
+        self.liste_monstres =  [__.split('.')[0] for __ in [_.split('/')[-1] for _ in glob('{0}/monstres/*.json'.format(settings.RESSOURCES_PATH))]]
 
 
     def objet_trouve(self):
