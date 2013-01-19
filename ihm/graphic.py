@@ -55,6 +55,9 @@ class Graphic:
             #for j in i:
                 #print(corres[i])
             #print('\n')
+        #position = self.res_tile_terre.get_rect() # terre
+        #position.centerx = ecran.get_width()/2
+        #position.centery = ecran.get_height()/6
 
         ## Parcours de la map
         #for ligne in carte.map:
