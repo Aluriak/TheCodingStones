@@ -4,6 +4,7 @@
 Classe qui gère le jeu per se
 """
 
+from sys import exit
 from json import load
 from random import randrange, choice
 from glob import glob
@@ -53,6 +54,8 @@ class Jeu:
         self.ihm.log(['Création de la liste des monstres'])
         self.generer_liste_monstres()
 
+    def stop(self):
+        sys.exit
 
     def start(self):
         """ fonction qui bosse (la seule qui bosse ici en fait....) """
@@ -64,9 +67,13 @@ class Jeu:
             # 1. afficher le jeu
             self.ihm.afficherJeu()
 
+            if self.ihm.utilisateurQuitte(): self.stop()
+
             # 2. attendre un mouvement
             # 3. IHM nous file la direction
             mouv = self.ihm.mouvement()
+
+            if self.ihm.utilisateurQuitte(): self.stop()
 
             # 4. on demande à la map si c'est OK
             # 5. on fait buoger le joueur si OK
@@ -107,6 +114,7 @@ class Jeu:
                 combat = Combat(self.joueur, monstre)
 
                 # 9.1. on refourgue le combat à l'ihm  qui affiche un dialog
+                if self.ihm.utilisateurQuitte(): self.stop()
                 choix_combat = self.ihm.dialogCombat(combat)
                 if choix_combat == 'combattre':
                     combat.combat()
@@ -114,6 +122,7 @@ class Jeu:
                     combat.fuite()
 
                 self.ihm.finCombat(combat)
+                if self.ihm.utilisateurQuitte(): self.stop()
                 self.reinit_pas()
 
             # 6.2. objet ?
@@ -121,6 +130,7 @@ class Jeu:
             # 8.2. on le refourgue à l'IHM qui affiche un dialog
             # 9.2. l'user répond et on prend en compte son choix
             self.ihm.log(["Checks pour les objets"])
+            if self.ihm.utilisateurQuitte(): self.stop()
             self.objet_trouve()
 
 
