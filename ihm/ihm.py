@@ -102,7 +102,11 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         format du tuple : ('nom', carSec, carIhm, carKernel, carHard)
         """
         # valeurs par défaut pour le moment
-        return ("jean-michel", 10, 10, 10, 10) 
+        return {'nom': "jean-michel",
+                'secu': 10,
+                'ihm': 10,
+                'kernel': 10,
+                'hardware': 10} 
     
 
     def initialiserJeu(self, joueur, carte): 
