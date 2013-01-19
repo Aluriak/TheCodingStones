@@ -14,7 +14,7 @@ Il devra au cours de son aventure faire face aux horribles sbires de **Crosoft**
 Moyens
 ======
 Richard se déplace selon les volontés du joueur, dans une carte prédéfinie.
-Il est définit par ses caractéristiques, sa barbe et son niveau.
+Il est définit par ses caractéristiques, sa barbe, son niveau et son niveau de café.
 Richard peut se couper la barbe pour augmenter son niveau, et ainsi recevoir des bonus définitifs à ses caractéristiques.
 Notre petit Richard pourra récupérer des objets qui l'aideront dans sa quête, en augmentant (ou diminuant), tant qu'ils sont équipés, certaines caractéristiques.
 

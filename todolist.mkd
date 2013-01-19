@@ -1,8 +1,13 @@
 # TODO LIST
-Choses à faire, et les gars qui s'en occupent (en tout cas, qui l'ont dit)
+- IHM
+    - interfaces graphiques
+        - démarrage
+        - menu principal
+        - jeu
+        - combat
+        - game over
 
 
-Classes joueur, ennemi, element, objet à implémenter
 
 
 

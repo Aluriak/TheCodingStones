@@ -29,6 +29,9 @@ Enfin, dites lui ce que vous voulez : vous pouvez lui faire afficher le jeu,
     que vous lui envoyez en argument,...
 L'IHM vous renverra des actions correspondant à la volonté de l'utilisateur.
 
+A FAIRE: tester utilisateurQuitte() le plus souvent possible, car il renvois vrai
+    quand l'utilisateur veut quitter. Il faudra alors tout arrêter.
+
 **Méthodes d'accès :**
     - __init__(): créé l'IHM. Charge les ressource et pygame.
 
@@ -58,27 +61,38 @@ L'IHM vous renverra des actions correspondant à la volonté de l'utilisateur.
     - ajouterLogs(logs): attent une liste de chaînes. Chaque chaîne sera 
         ajoutée à la liste de logs de l'IHM.
 
+    - utilisateurQuitte(): retourne vrai si l'utilisateur veut quitter
+
 
 le joueur et la carte sont les mêmes que ceux manipulés par le jeu. 
 Donc, pas besoin de les actualiser.
 L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
     """
+    # imports locaux
     import pygame
+    from ihm.graphic import Graphic
 
-    def __init__(self):
+    def __init__(self, largeur = 600, hauteur = 400):
         """
-        Démarre pygame.
-        Charge les ressources.
+        Initialisation de pygame.
+        Intialisation de Graphic.
+        hauteur et largeur de la fenêtre attendue en paramètres.
         """
         # initialisation de pygame
         pygame.display.init() # module graphique
+        pygame.font.init() # module de texte
+        # Création de l'écran 
+        self.ecran = pygame.display.set_mode(largeur, hauteur)
+        # création du graphic, simplifiant les affichages
+        self.graphics = Graphic()
         # autre attributs
         self.logs = ["IHM initialisée"]
         self.joueur = 0 # pas de joueur au départ
         self.carte = 0 # pas de carte au départ
+        self.termine = False # vrai si jeu terminé
 
 
-    def menuDemarrage(self): 
+    def menuDemarrage(self):
         """ 
         Gère un menu où l'utilisateur peut entrer :
             - nom
@@ -103,26 +117,65 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
     def afficherJeu(self): 
         """ 
         Affiche le jeu selon les valeurs connues (joueur et carte)
+        Retourne faux si l'utilisateur veut quitter
         """
-        pass
+        # appel à graphic pour le jeu
+        self.graphic.afficherJeu(self.ecran, self.carte, self.joueur, self.logs)
+        return not self.termine # retour de l'état du jeu (faux pour quitter)
 
 
     def mouvement(self): 
         """
         demande un mouvement à l'utilisateur, renvois 'haut', 'bas',
-        'gauche' ou 'droite'.
+        'gauche' ou 'droite'. Ou False si l'utilisateur veut quitter.
         """
-        # valeur par défaut : aléatoire
-        return random.choice(['haut', 'bas', 'gauche', 'droite'])
+        # affichage du jeu
+        self.afficherJeu()
+        # boucle event
+        while not self.termine:
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    termine = True
+                    self.termine = True
+                # pression de touches
+                elif event.type == KEYDOWN:
+                    if event.key == K_UP:
+                        return 'haut'
+                    elif event.key == K_DOWN:
+                        return 'bas'
+                    elif event.key == K_RIGHT:
+                        return 'droite'
+                    elif event.key == K_LEFT:
+                        return 'gauche'
+                    elif event.key == ESCAPE:
+                        self.termine = True
+        return False
 
 
     def dialogObjet(self, objet): 
         """ 
-        Attends un objet, retourne vrai si l'utilisateur 
-        veux s'en équiper
+        Attends un objet, retourne 
+            True si l'utilisateur veux s'en équiper
+            False si il ne veux pas
         """
-        # valeurs par défaut
-        return True 
+        self.graphic.afficherObjet(ecran, objet)
+        reponse = True
+        while not self.termine:
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    termine = True
+                    self.termine = True
+                # pression de touches
+                elif event.type == KEYDOWN:
+                    if event.key == ENTER:
+                        return reponse
+                    elif event.key == K_RIGHT:
+                        reponse = False
+                    elif event.key == K_LEFT:
+                        reponse = True
+                    elif event.key == ESCAPE:
+                        self.termine = True
+        return False
 
 
     def dialogCombat(self, combat): 
@@ -132,6 +185,7 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         actions possibles :
             - 'fuite'
             - 'combattre'
+        Retourne 
         """
         # valeurs par défaut
         return 'combattre'
@@ -163,6 +217,12 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         for log in logs:
             self.logs.append(log)
 
+
+    def utilisateurQuitte(self):
+        """
+        Retourne vrai si l'utilisateur quitte le jeu
+        """
+        return self.termine
 
 
 
