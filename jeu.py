@@ -4,7 +4,7 @@
 Classe qui gère le jeu per se
 """
 
-from json import loads
+from json import load
 from random import randrange, choice
 from glob import glob
 
@@ -50,6 +50,7 @@ class Jeu:
         self.ihm.log(['Tirage au sort du nombre de pas'])
         self.reinit_pas()
 
+        self.ihm.log(['Création de la liste des monstres'])
         self.generer_liste_monstres()
 
 
@@ -144,8 +145,7 @@ class Jeu:
                 objet = self.objets[nom_objet]
             else:
                 # on instancie l'objet
-                file  = open('{0}/objets/{1}.json'.format(settings.RESSOURCES_PATH, nom_objet))
-                donnees_objet = loads(file.read())
+                donnees_objet = load(open('{0}/objets/{1}.json'.format(settings.RESSOURCES_PATH, nom_objet)))
 
                 objet = Objet(
                     nom_objet,
@@ -157,17 +157,16 @@ class Jeu:
                 )
                 self.objets[nom_objet] = objet
 
-            # TESTER S'IL PEUT PRENDRE L'OBJET TODO
-            if self.ihm.dialogObjet(objet): # vrai si l'usr souhaite garder l'objet
-                resultat_equipement = self.joueur.equiperObjet(objet)
+            if self.joueur.peut_equiper(objet.poids):
+                if self.ihm.dialogObjet(objet): # vrai si l'usr souhaite garder l'objet
+                    resultat_equipement = self.joueur.equiperObjet(objet)
 
 
     def spawn_monstre(self):
         """ choisit un monstre au hasard, l'instancie et le retourne """
         nom_monstre = choice(self.liste_monstres)
 
-        file  = open('{0}/monstres/{1}.json'.format(settings.RESSOURCES_PATH, nom_monstre))
-        donnees_monstre = loads(file.read())
+        donnees_monstre = load(open('{0}/monstres/{1}.json'.format(settings.RESSOURCES_PATH, nom_monstre)))
 
         monstre = Ennemi(
             nom_monstre,

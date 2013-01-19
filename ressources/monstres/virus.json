@@ -1,8 +1,8 @@
 {
-    'nom': 'virus',
-    'cafe': 30,
-    'carSec': 12,
-    'carIhm': 3,
-    'carKernel': 15,
-    'carHard': 0,
+    "nom": "virus",
+    "cafe": 30,
+    "carSec": 12,
+    "carIhm": 3,
+    "carKernel": 15,
+    "carHard": 0
 }
