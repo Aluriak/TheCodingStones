@@ -22,12 +22,12 @@ class Jeu:
     """
     def __init__(self):
 
-        # on init. la map
-        self.map = Map(settings.LONGUEUR, settings.LARGEUR)
-
         # init IHM
         self.ihm = IHM(hauteur=settings.LONGUEUR, largeur=settings.LARGEUR)
         donnees_joueur = self.ihm.menuDemarrage()
+
+        # on init. la map
+        self.map = Map(settings.LONGUEUR, settings.LARGEUR)
 
         # on init le joueur
         self.joueur = Joueur(nom=donnees_joueur['nom'],
