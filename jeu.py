@@ -133,7 +133,7 @@ class Jeu:
             if self.ihm.utilisateurQuitte(): self.stop()
             self.objet_trouve()
 
-def generer_liste_monstres(self):
+    def generer_liste_monstres(self):
         """
         génère une liste de monstres à partir des fichiers dans RESSOURCES_PATH/monstres
         """
