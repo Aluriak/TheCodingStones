@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-
-
+from element.element import Element
 
 #########################
 # PERSO  (CLASS)        #
@@ -23,7 +22,7 @@ class Perso(Element):
             - carac kernel (entier, 10 PD)
             - carac hard (entier, 10 PD)
         """
-        Element.__init__(self, nom, carSec, carIhm, carKernel, carHard);
+        Element.__init__(self, nom, carSec, carIhm, carKernel, carHard)
         self.cafe = cafe # taux de cafe
         self.equipements = [] # liste d'objets
         self.poidsEquipement = 0 # pas d'objets équipés, donc poids porté à 0
@@ -62,7 +61,9 @@ class Perso(Element):
         #       qui ne sont pas l'objet cible
         #       si l'on rencontre l'objet visé, on ne l'insère pas dans la liste
         #               et on retire ses caractéristiques au joueur.
-        for obj in self.equipement:
+        inter = []
+
+        for obj in self.equipements:
             if(obj == objetCible):
                 # altération des caracs
                 self.carac[CARAC_SECURITE]      -= obj.carac[CARAC_SECURITE]
@@ -75,3 +76,11 @@ class Perso(Element):
                 inter.append(obj) # on ajoute l'objet à la liste intermédiaire
         # la liste intemédiaire écrase la liste régulière d'équipement
         self.equipement = inter
+
+    def perte_cafe(self, quantite):
+        """ applique les pertes en cafés """
+        self.cafe -= quantite
+
+    def vivant(self):
+        """ renvoie True si le perso est vivant """
+        return (self.cafe > 0)

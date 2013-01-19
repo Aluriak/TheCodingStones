@@ -7,7 +7,7 @@ from settings import *
 #########################
 # ELEMENT (CLASS)       #
 #########################
-class Element():
+class Element:
     """
     classe d'élément de jeu.
     tous les éléments sont dérivés de cette classe
@@ -29,10 +29,10 @@ class Element():
         """
         self.nom = nom
         self.carac = {
-            CARAC_SECU : carSec,
+            CARAC_SECURITE : carSec,
             CARAC_IHM : carIhm,
             CARAC_KERNEL : carKernel,
-            CARAC_HARD : carHard,
+            CARAC_HARDWARE : carHard,
         }
 
 
