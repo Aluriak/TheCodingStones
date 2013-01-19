@@ -168,7 +168,7 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
 
 
         # retour
-        return {'carSec':carSec,'carIhm':carIhm,'carKer':carKer,'carHar':carHar}
+        return {'secu':carSec,'ihm':carIhm,'kernel':carKer,'hardware':carHar}
 
 
     def initialiserJeu(self, joueur, carte):
