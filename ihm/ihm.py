@@ -189,7 +189,6 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         actions possibles :
             - 'fuite'
             - 'combattre'
-        Retourne
         """
         # valeurs par défaut
         return 'combattre'
