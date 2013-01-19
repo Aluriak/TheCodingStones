@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 
+import pygame
 
 
 #########################
@@ -16,7 +17,6 @@ class Graphic:
         - afficherDialogObjet(ecran, objet, reponse)
         - afficherDialogCombat(ecran, combat)
     """
-    import pygame
 
     # intialisation
     def __init__(self):
