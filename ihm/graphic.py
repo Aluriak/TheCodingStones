@@ -61,37 +61,33 @@ class Graphic:
 
         # Parcours de la map
         comptLigne = 0
-        comptColonne = 0
-        for ligne in carte.map:
-            if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
-                for colonne in ligne: 
-                    if(colonne > joueur.x-TILE_GAUCHE and 
-                            colonne < joueur.x+TILES_GAUCHE):
-                        # la case considérée doit être affichées
-                        coordLigne = ligne - (joueur.y - TILES_HAUT)
-                        coordColon = colonne - (joueur.x - TILES_GAUCHE)
-                        sprite = self.res_tile_terre # terre
-                        if carte.map[ligne][colonne] == 'Mur':
-                            sprite = self.res_tile_mur # mur
-                        elif carte.map[ligne][colonne] == 'Eau':
-                            sprite = self.res_tile_eau # eau
-                        elif carte.map[ligne][colonne] == 'Trou':
-                            sprite = self.res_tile_trou # trou
-                        elif carte.map[ligne][colonne] == 'Terre O':
-                            sprite = self.res_tile_terreO # terreO
-                        position = sprite.get_rec()
-                        position.centerx = coordLigne * TILE
-                        position.centery = coordColon * TILE
-                        ecran.blit(sprite, position)
-                    comptColonne += 1
-            comptColonne = 0
-            comptLigne += 1
+        comptColon = 0
+        for ligne in range(TILES_GAUCHE*2+1):
+            for colonne in range(TILES_HAUT*2+1):
+                # la case considérée doit être affichées
+                coordLigne = joueur.y - TILES_HAUT + ligne
+                coordColon = joueur.x - TILES_GAUCHE + colonne
+                sprite = self.res_tile_terre # terre
+                if carte.map[coordLigne][coordColon] == 'Mur':
+                    sprite = self.res_tile_mur # mur
+                elif carte.map[coordLigne][coordColon] == 'Eau':
+                    sprite = self.res_tile_water # eau
+                elif carte.map[coordLigne][coordColon] == 'Trou':
+                    sprite = self.res_tile_trou # trou
+                elif carte.map[coordLigne][coordColon] == 'Terre O':
+                    sprite = self.res_tile_terreO # terreO
+                position = sprite.get_rect()
+                position.centerx = (coordLigne - (coordLigne-ligne)) * TILE
+                position.centery = (coordColon - (coordColon-colonne)) * TILE
+                ecran.blit(sprite, position)
 
 
         # affichage du joueur
         position = self.res_tile_joueur.get_rect() # terre
+        self.res_tile_joueur.set_colorkey((0,255,0)) # transparence
         position.left = TILES_GAUCHE * TILE
         position.top = TILES_HAUT * TILE
+        ecran.blit(self.res_tile_joueur, position)
 
 
     def afficherMenu(self, ecran, selection, 

@@ -187,6 +187,7 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         """
         # appel à graphic pour le jeu
         self.graphics.afficherJeu(self.ecran, self.carte, self.joueur, self.logs)
+        pygame.display.flip()
         return not self.termine # retour de l'état du jeu (faux pour quitter)
 
 
