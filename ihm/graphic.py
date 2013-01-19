@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 
+import pygame
 
 
 #########################
@@ -16,7 +17,6 @@ class Graphic:
         - afficherDialogObjet(ecran, objet, reponse)
         - afficherDialogCombat(ecran, combat)
     """
-    import pygame
 
     # intialisation
     def __init__(self):
@@ -46,12 +46,12 @@ class Graphic:
         affiche la boite de dialogue pour l'objet envoyé.
         reponseest un booléen, décrivant la réponse mise en avant.
         """
-        # Fill background
+        # background
         background = pygame.Surface(screen.get_size())
         background = background.convert()
         background.fill((0, 0, 0))
 
-        # Display some text
+        # intégration du texte
         font = pygame.font.Font("Terminus", 36)
         text = font.render("""Objet : {0} 
 Poids : {1}
@@ -68,19 +68,16 @@ S'équiper ?""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
         textpos.centerx = background.get_rect().centerx
         background.blit(text, textpos)
 
-        # Blit everything to the screen
+        # On blit tout
         ecran.blit(background, (0, 0))
         pygame.display.flip()
-        pass
 
 
     def afficherDialogCombat(self, ecran, combat, reponse):
         """
         affiche la boite de dialogue pour le combat envoyé
         """
-        #ecran.fill(0,0,0) # on vide l'écran
         pygame.display.flip()
-        pass
 
 
 
