@@ -28,28 +28,32 @@ class Graphic:
         """
         affiche le jeu dans l'écran
         """
-        ecran.fill(0,0,0) # on vide l'écran
+        #ecran.fill(0,0,0) # on vide l'écran
+        pass
 
 
     def afficherMenu(self, ecran):
         """
         affiche le menu dans l'écran
         """
-        ecran.fill(0,0,0) # on vide l'écran
+        #ecran.fill(0,0,0) # on vide l'écran
+        pass
 
     def afficherDialogObjet(self, ecran, objet, reponse):
         """
         affiche la boite de dialogue pour l'objet envoyé.
         reponseest un booléen, décrivant la réponse mise en avant.
         """
-        ecran.fill(0,0,0) # on vide l'écran
+        #ecran.fill(0,0,0) # on vide l'écran
+        pass
 
 
     def afficherDialogCombat(self, ecran, combat):
         """
         affiche la boite de dialogue pour le combat envoyé
         """
-        ecran.fill(0,0,0) # on vide l'écran
+        #ecran.fill(0,0,0) # on vide l'écran
+        pass
 
 
 
