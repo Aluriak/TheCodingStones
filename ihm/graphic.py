@@ -38,6 +38,8 @@ class Graphic:
                 "ressources/graphique/tileset/water.bmp")
         self.res_tile_trou = pygame.image.load(
                 "ressources/graphique/tileset/trou.bmp")
+        self.res_tile_joueur = pygame.image.load(
+                "ressources/graphique/tileset/joueur.bmp")
 
 
     def afficherJeu(self, ecran, carte, joueur, logs):
@@ -56,20 +58,34 @@ class Graphic:
                 #print(corres[i])
             #print('\n')
 
-        ## Parcours de la map
-        #for ligne in carte.map:
-            #if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
-                #for colonne in ligne: 
-                    #if(colonne > joueur.x-TILE_GAUCHE and 
-                            #colonne < joueur.x+TILES_GAUCHE):
-                        ## la case considérée doit être affichées
-                        #coordLigne = ligne - (joueur.y - TILES_HAUT)
-                        #coordColon = colonne - (joueur.x - TILES_GAUCHE)
-                        #position = self.res_tile_terre.get_rect() # terre
-                        #if colonne
-                        #position.centerx = coordLigne * TILE
-                        #position.centery = coordColon * TILE
-        carte.affichage()
+        # Parcours de la map
+        for ligne in carte.map:
+            if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
+                for colonne in ligne: 
+                    if(colonne > joueur.x-TILE_GAUCHE and 
+                            colonne < joueur.x+TILES_GAUCHE):
+                        # la case considérée doit être affichées
+                        coordLigne = ligne - (joueur.y - TILES_HAUT)
+                        coordColon = colonne - (joueur.x - TILES_GAUCHE)
+                        sprite = self.res_tile_terre # terre
+                        if carte.map[ligne][colonne] == 'Mur':
+                            sprite = self.res_tile_mur # mur
+                        elif carte.map[ligne][colonne] == 'Eau':
+                            sprite = self.res_tile_eau # eau
+                        elif carte.map[ligne][colonne] == 'Trou':
+                            sprite = self.res_tile_trou # trou
+                        elif carte.map[ligne][colonne] == 'Terre O':
+                            sprite = self.res_tile_terreO # terreO
+                        position = sprite.get_rec()
+                        position.centerx = coordLigne * TILE
+                        position.centery = coordColon * TILE
+                        ecran.blit(sprite, position)
+
+
+        # affichage du joueur
+        position = self.res_tile_joueur.get_rect() # terre
+        position.left = TILES_GAUCHE * TILE
+        position.top = TILES_HAUT * TILE
 
 
     def afficherMenu(self, ecran, selection, 
