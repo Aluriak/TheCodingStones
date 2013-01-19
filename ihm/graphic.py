@@ -55,9 +55,6 @@ class Graphic:
             #for j in i:
                 #print(corres[i])
             #print('\n')
-        #position = self.res_tile_terre.get_rect() # terre
-        #position.centerx = ecran.get_width()/2
-        #position.centery = ecran.get_height()/6
 
         ## Parcours de la map
         #for ligne in carte.map:
@@ -68,6 +65,10 @@ class Graphic:
                         ## la case considérée doit être affichées
                         #coordLigne = ligne - (joueur.y - TILES_HAUT)
                         #coordColon = colonne - (joueur.x - TILES_GAUCHE)
+                        #position = self.res_tile_terre.get_rect() # terre
+                        #if colonne
+                        #position.centerx = coordLigne * TILE
+                        #position.centery = coordColon * TILE
         carte.affichage()
 
 
