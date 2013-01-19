@@ -2,6 +2,7 @@
 
 import pygame
 import time
+from settings import *
 
 
 #########################
@@ -59,6 +60,8 @@ class Graphic:
             #print('\n')
 
         # Parcours de la map
+        comptLigne = 0
+        comptColonne = 0
         for ligne in carte.map:
             if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
                 for colonne in ligne: 
@@ -80,6 +83,9 @@ class Graphic:
                         position.centerx = coordLigne * TILE
                         position.centery = coordColon * TILE
                         ecran.blit(sprite, position)
+                    comptColonne += 1
+            comptColonne = 0
+            comptLigne += 1
 
 
         # affichage du joueur
