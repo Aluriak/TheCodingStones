@@ -45,6 +45,8 @@ class Jeu:
         # pas pour le prochain monstre
         self.reinit_pas()
 
+        self.generer_liste_monstres()
+
 
     def start(self):
         """ fonction qui bosse (la seule qui bosse ici en fait....) """
