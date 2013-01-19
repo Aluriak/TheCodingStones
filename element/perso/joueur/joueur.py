@@ -42,8 +42,8 @@ class Joueur(Perso):
     def coords(self): return (self.x, self.y)
     def droite(self): self.x += 1
     def gauche(self): self.x -= 1
-    def haut(self): self.y += 1
-    def bas(self): self.y -= 1
+    def haut(self): self.y -= 1
+    def bas(self): self.y += 1
 
 
 
