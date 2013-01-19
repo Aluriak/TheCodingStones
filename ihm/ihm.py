@@ -60,7 +60,7 @@ A FAIRE: tester utilisateurQuitte() le plus souvent possible, car il renvois vra
     - gameOver(): affiche l'écran de fin de jeu, s'arrête quand l'utilisateur
         quitte l'écran de fin de jeu, en ne renvoyant rien.
 
-    - ajouterLogs(logs): attent une liste de chaînes. Chaque chaîne sera
+    - logs(logs): attent une liste de chaînes. Chaque chaîne sera
         ajoutée à la liste de logs de l'IHM.
 
     - utilisateurQuitte(): retourne vrai si l'utilisateur veut quitter
@@ -212,14 +212,15 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         pass
 
 
-    def ajouterLogs(self, logs):
+    def log(self, logs):
         """
         Attend une liste de chaînes. Chaque chaîne sera
         ajoutée à la liste de logs de l'IHM.
         """
         # on rajoute les éléments de logs dans les logs de l'IHM
         for log in logs:
-            self.logs.append(log)
+            self.logs.append(log) # ajout dans les logs
+            print log # affichage dans la sortie standard
 
 
     def utilisateurQuitte(self):
