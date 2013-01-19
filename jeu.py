@@ -33,8 +33,7 @@ class Jeu:
 
         # on init le joueur
         self.ihm.log(['Creation du joueur'])
-        self.joueur = Joueur(nom=donnees_joueur['nom'],
-                             carSec = donnees_joueur['secu'],
+        self.joueur = Joueur(carSec = donnees_joueur['secu'],
                              carIhm = donnees_joueur['ihm'],
                              carKernel = donnees_joueur['kernel'],
                              carHard = donnees_joueur['hardware']
