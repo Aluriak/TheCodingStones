@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 
 import pygame
+import time
 from graphic import Graphic
 
 
@@ -102,7 +103,72 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             format du dico : {'carSec':int, 'carIhm':int, 'carKer':int, 
                 'carHar':int}
         """
-        return self.graphics.afficherMenu(self.ecran)
+        # event 
+        termine = False
+        carSec = 10
+        carIhm = 10
+        carKer = 10
+        carHar = 10
+        selection = 1
+        reservePoint = 6
+        while not termine:
+            # AFFICHAGES
+            self.graphics.afficherMenu(self.ecran, selection, 
+                                    carSec, carIhm, carKer, carHar)
+            # ÉVÈNEMENTS
+            for event in pygame.event.get():
+                time.sleep(0.1)
+                if event.type == pygame.QUIT: 
+                    termine = True
+                    self.termine = True
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        termine = True
+                        self.termine = True
+                    elif event.key == pygame.K_UP:
+                        selection -= 1
+                        # si on est arrivés en bout de menu, on va en bas
+                        if selection == 0:
+                            selection = 5
+                    elif event.key == pygame.K_DOWN:
+                        selection += 1
+                        # si on est arrivés en bout de menu, on va en haut
+                        if selection == 6:
+                            selection = 1
+                    elif event.key == pygame.K_RIGHT:
+                        if selection == 1 and reservePoint > 0:
+                            carSec += 1
+                            reservePoint -= 1
+                        elif selection == 2 and reservePoint > 0:
+                            carIhm += 1
+                            reservePoint -= 1
+                        elif selection == 3 and reservePoint > 0:
+                            carKer += 1
+                            reservePoint -= 1
+                        elif selection == 4 and reservePoint > 0:
+                            carHar += 1
+                            reservePoint -= 1
+                        elif selection == 5:
+                            termine = True
+                    elif event.key == pygame.K_LEFT:
+                        if selection == 1 and reservePoint <= 6:
+                            carSec -= 1
+                            reservePoint += 1
+                        elif selection == 2 and reservePoint <= 6:
+                            carIhm -= 1
+                            reservePoint += 1
+                        elif selection == 3 and reservePoint <= 6:
+                            carKer -= 1
+                            reservePoint += 1
+                        elif selection == 4 and reservePoint <= 6:
+                            carHar -= 1
+                            reservePoint += 1
+                    elif event.key == pygame.K_RETURN and selection == 5:
+                        termine = True
+
+
+        # retour
+        return {'carSec':carSec,'carIhm':carIhm,'carKer':carKer,'carHar':carHar}
 
 
     def initialiserJeu(self, joueur, carte):
@@ -157,9 +223,9 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             True si l'utilisateur veux s'en équiper
             False si il ne veux pas
         """
-        reponse = True
+        reponse = 'oui'
         while not self.termine:
-            self.graphics.afficherDialogObjet(self.ecran, objet)
+            self.graphics.afficherDialogObjet(self.ecran, objet, reponse)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     termine = True
@@ -169,9 +235,9 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
                     if event.key == pygame.K_RETURN:
                         return reponse
                     elif event.key ==pygame.K_RIGHT:
-                        reponse = False
+                        reponse = 'non'
                     elif event.key == pygame.K_LEFT:
-                        reponse = True
+                        reponse = 'oui'
                     elif event.key == pygame.K_ESCAPE:
                         self.termine = True
         return False

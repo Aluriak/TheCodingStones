@@ -22,22 +22,10 @@ class Graphic:
     # intialisation
     def __init__(self):
         # chargement des ressources
-        self.res_bouton_oui = pygame.image.load(
-                "ressources/graphique/boutons/oui_black.bmp")
-        self.res_bouton_ouiSel = pygame.image.load(
-                "ressources/graphique/boutons/oui_red.bmp")
-        self.res_bouton_non = pygame.image.load(
-                "ressources/graphique/boutons/non_black.bmp")
-        self.res_bouton_nonSel = pygame.image.load(
-                "ressources/graphique/boutons/non_red.bmp")
         self.res_menu_back = pygame.image.load(
                 "ressources/graphique/menu/menu_background.bmp")
         self.res_menu_title = pygame.image.load(
                 "ressources/graphique/menu/menu_title.bmp")
-        self.res_menu_userBig = pygame.image.load(
-                "ressources/graphique/menu/user_big.bmp")
-        self.res_menu_userSmall = pygame.image.load(
-                "ressources/graphique/menu/user_small.bmp")
 
 
     def afficherJeu(self, ecran, carte, joueur, logs):
@@ -49,7 +37,7 @@ class Graphic:
             'Mur' : 'X',
             'Eau' : '~',
             'Trou' : 'O',
-            'Terre O' : ' '
+            'Terre O' : '@'
         }
         for i in map:
             for j in i:
@@ -59,10 +47,10 @@ class Graphic:
         pass
 
 
-    def afficherMenu_under(self, ecran, selection, 
+    def afficherMenu(self, ecran, selection, 
                            carSec, carIhm, carKer, carHar):
         """ 
-        sous traitance de la fonction afficherMenu()
+        Affiche le menu
         """
         nomChamps = "" # nom du champs à afficher
         # éléments à afficher
@@ -73,7 +61,6 @@ class Graphic:
 
         # intégration du texte
         font = pygame.font.Font(None, 30) # font utilisé
-        print selection
         if selection == 1:
             nomChamps = "SECURITE : "
         else:
@@ -133,76 +120,6 @@ class Graphic:
         pygame.display.flip()
 
 
-    def afficherMenu(self, ecran):
-        """
-        affiche le menu dans l'écran
-        """
-        # event 
-        termine = False
-        carSec = 10
-        carIhm = 10
-        carKer = 10
-        carHar = 10
-        selection = 1
-        reservePoint = 6
-        while not termine:
-            # AFFICHAGES
-            print selection
-            self.afficherMenu_under(ecran, selection, 
-                                    carSec, carIhm, carKer, carHar)
-            # ÉVÈNEMENTS
-            for event in pygame.event.get():
-                time.sleep(0.1)
-                if event.type == pygame.QUIT: 
-                    termine = True
-                    self.termine = True
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        termine = True
-                        self.termine = True
-                    elif event.key == pygame.K_UP:
-                        selection -= 1
-                        # si on est arrivés en bout de menu, on va en bas
-                        if selection == 0:
-                            selection = 5
-                    if event.key == pygame.K_DOWN:
-                        selection += 1
-                        # si on est arrivés en bout de menu, on va en haut
-                        if selection == 6:
-                            selection = 1
-                    if event.key == pygame.K_RIGHT:
-                        if selection == 1 and reservePoint > 0:
-                            carSec += 1
-                            reservePoint -= 1
-                        elif selection == 2 and reservePoint > 0:
-                            carIhm += 1
-                            reservePoint -= 1
-                        elif selection == 3 and reservePoint > 0:
-                            carKer += 1
-                            reservePoint -= 1
-                        elif selection == 4 and reservePoint > 0:
-                            carHar += 1
-                            reservePoint -= 1
-                        elif selection == 5:
-                            termine = True
-                    if event.key == pygame.K_LEFT:
-                        if selection == 1 and reservePoint <= 6:
-                            carSec -= 1
-                            reservePoint += 1
-                        elif selection == 2 and reservePoint <= 6:
-                            carIhm -= 1
-                            reservePoint += 1
-                        elif selection == 3 and reservePoint <= 6:
-                            carKer -= 1
-                            reservePoint += 1
-                        elif selection == 4 and reservePoint <= 6:
-                            carHar -= 1
-                            reservePoint += 1
-
-
-        # retour
-        return {'carSec':carSec,'carIhm':carIhm,'carKer':carKer,'carHar':carHar}
-
 
     def afficherDialogObjet(self, ecran, objet, reponse):
         """
@@ -222,10 +139,12 @@ Sécurité : {2}
 IHM : {3}
 Kernel : {4}
 Hardware : {5}
-S'équiper ?""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
+S'équiper ?
+{6}""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
                         objet.carac[CARAC_IHM],
                         objet.carac[CARAC_KERNEL],
-                        objet.carac[CARAC_HARD]), 
+                        objet.carac[CARAC_HARD],
+                        reponse), 
                            1, (255, 255, 255))
         textpos = text.get_rect()
         textpos.centerx = background.get_rect().centerx
@@ -240,7 +159,7 @@ S'équiper ?""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
         """
         affiche la boite de dialogue pour le combat envoyé
         """
-        pygame.display.flip()
+        pass
 
 
 
