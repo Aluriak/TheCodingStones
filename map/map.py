@@ -64,32 +64,32 @@ class Map:
         return (self.map[y][x].split(' ')[0] == "Terre")
 
 
-	def positionnement_objet(self):
-		""" place aléatoirement les objets sur la map """
-		for i in map:
-			for j in i:
-				if self.types == "Terre":
-					if random() <= 0.001:
-						self.types = "Terre O"
+    def positionnement_objet(self):
+        """ place aléatoirement les objets sur la map """
+        for i in map:
+            for j in i:
+                if self.types == "Terre":
+                    if random() <= 0.001:
+                        self.types = "Terre O"
 
-	def affichage(self):
-		""" affcichage de la map """
-		corres = {
-				'Terre' : ' ',
-				'Mur' : 'X',
-				'Eau' : '~',
-				'Trou' : 'O',
-				'Terre O' : ' '
-				}
-		for i in map:
-			for j in i:
-				print(corres[i])
-				print('\n')
+    def affichage(self):
+        """ affcichage de la map """
+        corres = {
+            'Terre' : ' ',
+            'Mur' : 'X',
+            'Eau' : '~',
+            'Trou' : 'O',
+            'Terre O' : ' '
+        }
+        for i in map:
+            for j in i:
+                print(corres[i])
+            print('\n')
 
 
-	def objet_present(self, x, y):
-		""" retourne le type d'objet si présent """
-		if self.map[y][x] == "Terre O":
-			return choice(self.liste_objets)
-		else:
-			return ''
+    def objet_present(self, x, y):
+        """ retourne le type d'objet si présent """
+        if self.map[y][x] == "Terre O":
+            return choice(self.liste_objets)
+        else:
+            return ''

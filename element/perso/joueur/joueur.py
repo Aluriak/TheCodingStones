@@ -12,8 +12,8 @@ class Joueur(Perso):
     """
     Classe du joueur, dérivant de Perso.
     """
-    
-    def __init__(self, nom, poidsMax = 10, cafe = 42, carSec = 10, 
+
+    def __init__(self, nom, poidsMax = 10, cafe = 42, carSec = 10,
                  carIhm = 10, carKernel = 10, carHard = 10):
         """
         Initialise le joueur, selon Element
@@ -25,11 +25,11 @@ class Joueur(Perso):
             - carac kernel (entier, 10 PD)
             - carac hard (entier, 10 PD)
         """
-        Perso.__init__(self, nom, poidsMax, cafe, 
+        Perso.__init__(self, nom, poidsMax, cafe,
                        carSec, carIhm, carKernel, carHard);
         self.poidsEquipement = 0 # pas d'objets équipés, donc poids porté à 0
         self.poidsMax = poidsMax # poids maximum portable
-        # le poids max doit toujours être supérieur ou égal 
+        # le poids max doit toujours être supérieur ou égal
         #       au poids de l'équipement. (logique, non ?)
         self.x = 0
         self.y = 0
