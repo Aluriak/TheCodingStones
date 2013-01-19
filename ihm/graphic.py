@@ -21,15 +21,40 @@ class Graphic:
     # intialisation
     def __init__(self):
         # chargement des ressources
-        pass
+        self.res_bouton_oui = pygame.image.load(
+                "ressources/graphique/boutons/oui_black.bmp")
+        self.res_bouton_ouiSel = pygame.image.load(
+                "ressources/graphique/boutons/oui_red.bmp")
+        self.res_bouton_non = pygame.image.load(
+                "ressources/graphique/boutons/non_black.bmp")
+        self.res_bouton_nonSel = pygame.image.load(
+                "ressources/graphique/boutons/non_red.bmp")
+        self.res_menu_back = pygame.image.load(
+                "ressources/graphique/menu/menu_background.bmp")
+        self.res_menu_title = pygame.image.load(
+                "ressources/graphique/menu/menu_title.bmp")
+        self.res_menu_userBig = pygame.image.load(
+                "ressources/graphique/menu/menu_userBig.bmp")
+        self.res_menu_userSmall = pygame.image.load(
+                "ressources/graphique/menu/menu_userSmall.bmp")
 
 
     def afficherJeu(self, ecran, carte, joueur, logs):
         """
         affiche le jeu dans l'écran
         """
-        #ecran.fill(0,0,0) # on vide l'écran
-        pygame.display.flip()
+        corres = {
+            'Terre' : ' ',
+            'Mur' : 'X',
+            'Eau' : '~',
+            'Trou' : 'O',
+            'Terre O' : ' '
+        }
+        for i in map:
+            for j in i:
+                print(corres[i])
+            print('\n')
+
         pass
 
 
@@ -37,21 +62,38 @@ class Graphic:
         """
         affiche le menu dans l'écran
         """
-        #ecran.fill(0,0,0) # on vide l'écran
-        pygame.display.flip()
-        pass
+        ## background
+        #background = pygame.Surface(ecran.get_size())
+        #background = background.convert()
+        #background.fill((0, 0, 0))
+
+        ## affichage du titre
+
+        ## intégration du texte
+        #font = pygame.font.Font("Terminus", 36)
+        #text = font.render("Nom : ", 1, (255, 255, 255))
+        #textpos = text.get_rect()
+        #textpos.centerx = background.get_rect().centerx
+        #background.blit(text, textpos)
+
+        ## On blitte tout
+        #ecran.blit(background, (0, 0))
+        #pygame.display.flip()
+        nom = raw_input("Nom : ")
+        return (nom, 10,10,10,10)
+
 
     def afficherDialogObjet(self, ecran, objet, reponse):
         """
         affiche la boite de dialogue pour l'objet envoyé.
-        reponseest un booléen, décrivant la réponse mise en avant.
+        reponse est un booléen, décrivant la réponse mise en avant.
         """
-        # Fill background
-        background = pygame.Surface(screen.get_size())
+        # background
+        background = pygame.Surface(ecran.get_size())
         background = background.convert()
         background.fill((0, 0, 0))
 
-        # Display some text
+        # intégration du texte
         font = pygame.font.Font("Terminus", 36)
         text = font.render("""Objet : {0} 
 Poids : {1}
@@ -68,19 +110,16 @@ S'équiper ?""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
         textpos.centerx = background.get_rect().centerx
         background.blit(text, textpos)
 
-        # Blit everything to the screen
+        # On blitte tout
         ecran.blit(background, (0, 0))
         pygame.display.flip()
-        pass
 
 
     def afficherDialogCombat(self, ecran, combat, reponse):
         """
         affiche la boite de dialogue pour le combat envoyé
         """
-        #ecran.fill(0,0,0) # on vide l'écran
         pygame.display.flip()
-        pass
 
 
 
