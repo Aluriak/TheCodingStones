@@ -13,7 +13,7 @@ class Graphic():
     l'écran où afficher.
         - afficherJeu(ecran, carte, joueur, logs)
         - afficherMenu(ecran)
-        - afficherDialogObjet(ecran, objet)
+        - afficherDialogObjet(ecran, objet, reponse)
         - afficherDialogCombat(ecran, combat)
     """
     import pygame
@@ -39,9 +39,10 @@ class Graphic():
 
 
 
-    def afficherDialogObjet(self, ecran, objet):
+    def afficherDialogObjet(self, ecran, objet, reponse):
         """
-        affiche la boite de dialogue pour l'objet envoyé
+        affiche la boite de dialogue pour l'objet envoyé.
+        reponseest un booléen, décrivant la réponse mise en avant.
         """
         screen.fill(black) # on vide l'écran
 

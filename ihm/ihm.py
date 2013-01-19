@@ -113,7 +113,6 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         self.joueur = joueur
         self.carte = carte
 
-
     def afficherJeu(self): 
         """ 
         Affiche le jeu selon les valeurs connues (joueur et carte)
@@ -158,9 +157,9 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             True si l'utilisateur veux s'en équiper
             False si il ne veux pas
         """
-        self.graphic.afficherObjet(ecran, objet)
         reponse = True
         while not self.termine:
+            self.graphic.afficherObjet(ecran, objet, reponse)
             for event in pygame.event.get():
                 if event.type == QUIT:
                     termine = True
