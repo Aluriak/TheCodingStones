@@ -23,7 +23,7 @@ class Jeu:
     def __init__(self):
 
         # init IHM
-        self.ihm = IHM(hauteur=settings.LONGUEUR, largeur=settings.LARGEUR)
+        self.ihm = IHM(hauteur=settings.FENETRE_LONGUEUR, largeur=settings.FENETRE_LARGEUR)
         donnees_joueur = self.ihm.menuDemarrage()
         self.ihm.log(['Données joueurs récupérées'])
 

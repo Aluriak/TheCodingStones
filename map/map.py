@@ -6,7 +6,7 @@ File : map.py
 Gestion de la map.
 """
 
-from random import choice, random
+from random import choice, random, randrange
 from glob import glob
 from re import sub
 import os
@@ -23,11 +23,16 @@ class Map:
         largeur => largeur
     """
 
+    # types = {
+    #     'Trou' : 2 ,
+    #     'Mur' : 12,
+    #     'Eau' : 4,
+    #     'Terre' : 30,
+    # }
     types = {
-        'Trou' : 2 ,
-        'Mur' : 12,
-        'Eau' : 4,
-        'Terre' : 20,
+        'Trou' : 6 ,
+        'Mur' : 42,
+        'Eau' : 10,
     }
 
     def __init__(self, longueur, largeur):
@@ -40,7 +45,36 @@ class Map:
         self.liste_objets = self.generer_liste_objets()
 
         # générer la map elle même.
-        self.map = [[choice(self.generer_liste_types()) for _ in range(self.largeur)] for __ in range(self.longueur)]
+        types = self.generer_liste_types()
+        self.map = self._generer_map()
+
+    def _generer_map(self):
+        # v1
+        # return [[choice(types) for _ in range(self.largeur)] for __ in range(self.longueur)]
+        # v2
+        # on génère une map "blanche" et on la rempli à coup de blocs
+
+        from blocs import blocs
+
+        map = [['Terre' for _ in range(self.largeur)] for __ in range(self.longueur)]
+        for i in Map.types.keys():
+            bloc = choice(blocs)
+            bloc = bloc.splitlines()
+
+            for j in range(Map.types[i]):
+                 x = randrange(self.largeur-len(bloc[0]))
+                 y = randrange(self.longueur-len(bloc))
+                 try:
+                     for x_cur in range(len(bloc[0])):
+                         for y_cur in range(len(bloc)):
+                             if bloc[y_cur][x_cur] != 0:
+                                 map[y+y_cur][x+x_cur] = i
+                 except IndexError:
+                     continue
+
+        return map
+
+
 
     def generer_liste_types(self):
         """ genere une liste des possibles pour les cases """
@@ -79,12 +113,11 @@ class Map:
             'Mur' : 'X',
             'Eau' : '~',
             'Trou' : 'O',
-            'Terre O' : ' '
+            'Terre O' : '@'
         }
-        for i in map:
-            for j in i:
-                print(corres[i])
-            print('\n')
+
+        for i in self.map:
+            print(''.join([corres[_] for _ in i]))
 
 
     def objet_present(self, x, y):
