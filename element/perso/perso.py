@@ -84,3 +84,10 @@ class Perso(Element):
     def vivant(self):
         """ renvoie True si le perso est vivant """
         return (self.cafe > 0)
+
+    def peut_equiper(self, poids_objet):
+        """
+        retourne True si le poids de l'objet que l'on voudrait équiper + ceux des objets déjà équipés ne dépasse pas
+        le poids max acceptable
+        """
+        return ((self.poidsEquipement+poids_objet) <= self.poidsMax)
