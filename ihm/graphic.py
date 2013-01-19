@@ -179,14 +179,14 @@ class Graphic:
         background.fill((0, 0, 0))
 
         # intégration du texte
-        font = pygame.font.Font("Terminus", 36)
+        font = pygame.font.Font(None, 36)
         text = font.render("""Objet : {0} 
 Poids : {1}
-Sécurité : {2}
+Securite : {2}
 IHM : {3}
 Kernel : {4}
 Hardware : {5}
-S'équiper ?
+Equiper cet objet ?
 {6}""".format(objet.nom, objet.poids, objet.carac[CARAC_SECU],
                         objet.carac[CARAC_IHM],
                         objet.carac[CARAC_KERNEL],
