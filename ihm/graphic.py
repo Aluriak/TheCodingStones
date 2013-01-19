@@ -22,10 +22,12 @@ class Graphic:
     # intialisation
     def __init__(self):
         # chargement des ressources
+        # MENU
         self.res_menu_back = pygame.image.load(
                 "ressources/graphique/menu/menu_background.bmp")
         self.res_menu_title = pygame.image.load(
                 "ressources/graphique/menu/menu_title.bmp")
+        # TILESET
 
 
     def afficherJeu(self, ecran, carte, joueur, logs):
@@ -44,7 +46,18 @@ class Graphic:
                 print(corres[i])
             print('\n')
 
-        pass
+        # Parcours de la map
+        for ligne in carte.map:
+            if ligne > joueur.y-TILES_HAUT and ligne < joueur.y+TILES_HAUT:
+                for colonne in ligne: 
+                    if(colonne > joueur.x-TILE_GAUCHE and 
+                            colonne < joueur.x+TILES_GAUCHE):
+                        # la case considérée doit être affichées
+                        coordLigne = ligne - (joueur.y - TILES_HAUT)
+                        coordColon = colonne - (joueur.x - TILES_GAUCHE)
+                        
+
+                 
 
 
     def afficherMenu(self, ecran, selection, 
