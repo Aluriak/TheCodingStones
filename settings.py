@@ -14,8 +14,10 @@ CARAC_HARDWARE =  "Hardware"
 RESSOURCES_PATH = "ressources/"
 
 
+LONGUEUR = 400
+LARGEUR = 600
 
-
+PAS = 20
 
 #########################
 # IMPORTS               #

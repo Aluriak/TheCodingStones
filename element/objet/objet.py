@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-
+from element.element import Element
 
 
 #########################
