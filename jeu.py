@@ -55,7 +55,7 @@ class Jeu:
         self.generer_liste_monstres()
 
     def stop(self):
-        sys.exit
+        exit(0)
 
     def start(self):
         """ fonction qui bosse (la seule qui bosse ici en fait....) """
@@ -133,8 +133,7 @@ class Jeu:
             if self.ihm.utilisateurQuitte(): self.stop()
             self.objet_trouve()
 
-
-    def generer_liste_monstres(self):
+def generer_liste_monstres(self):
         """
         génère une liste de monstres à partir des fichiers dans RESSOURCES_PATH/monstres
         """
