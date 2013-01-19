@@ -99,14 +99,10 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             - caracs
         Renvois un dico indiquant ces données. (le jeu pourra alors créer
             un joueur ayant ces carac et ce nom)
-        format du tuple : ('nom', carSec, carIhm, carKernel, carHard)
+            format du dico : {'carSec':int, 'carIhm':int, 'carKer':int, 
+                'carHar':int}
         """
-        # valeurs par défaut pour le moment
-        return {'nom': "jean-michel",
-                'secu': 10,
-                'ihm': 10,
-                'kernel': 10,
-                'hardware': 10}
+        return self.graphics.afficherMenu(self.ecran)
 
 
     def initialiserJeu(self, joueur, carte):
