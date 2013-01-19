@@ -195,7 +195,6 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             self.graphics.afficherDialogCombat(ecran, combat, reponse)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    termine = True
                     self.termine = True
                 # pression de touches
                 elif event.type == pygame.KEYDOWN:
@@ -231,7 +230,7 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
     def log(self, logs):
         """
         Attend une liste de chaînes. Chaque chaîne sera
-        ajoutée à la liste de logs de l'IHM.
+        ajoutée à la liste de logs de l'IHM, et affichée dans la sortie standard.
         """
         # on rajoute les éléments de logs dans les logs de l'IHM
         for log in logs:
