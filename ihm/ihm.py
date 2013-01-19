@@ -161,10 +161,9 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
             True si l'utilisateur veux s'en équiper
             False si il ne veux pas
         """
-        self.graphics.afficherDialogObjet(self.ecran, objet)
         reponse = True
         while not self.termine:
-            self.graphic.afficherObjet(ecran, objet, reponse)
+            self.graphics.afficherDialogObjet(self.ecran, objet)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     termine = True
@@ -188,10 +187,28 @@ L'IHM ne modifie jamais les valeurs envoyées, la carte ou le joueur.
         combat, (combattre ou fuire, dans un premier temps)
         actions possibles :
             - 'fuite'
-            - 'combattre'
+            - 'combat'
         """
         # valeurs par défaut
-        return 'combattre'
+        reponse = 'fuite'
+        while not self.termine:
+            self.graphics.afficherDialogCombat(ecran, combat, reponse)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    termine = True
+                    self.termine = True
+                # pression de touches
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        return reponse
+                    elif event.key ==pygame.K_RIGHT:
+                        reponse = 'fuite'
+                    elif event.key == pygame.K_LEFT:
+                        reponse = 'combat'
+                    elif event.key == pygame.K_ESCAPE:
+                        self.termine = True
+                        reponse = 'fuite'
+        return reponse
 
 
     def finCombat(self, combat):
